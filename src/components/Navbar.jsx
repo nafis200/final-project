@@ -19,6 +19,7 @@ const Navbar = () => {
     
     </>
     return (
+        
         <>
         <div className="navbar fixed z-10 bg-opacity-45 bg-black text-white max-w-screen-xl">
   <div className="navbar-start">
