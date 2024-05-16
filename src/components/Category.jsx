@@ -8,11 +8,14 @@ import img2 from "../images/home/slide2.jpg"
 import img3 from "../images/home/slide3.jpg"
 import img4 from "../images/home/slide4.jpg"
 import img5 from "../images/home/slide5.jpg"
+import Sectiontitle from "./Sectiontitle";
 
 
 const Category = () => {
   return (
-    <Swiper
+   <section>
+    <Sectiontitle heading={"Order Online"} subHeading={"From 11.00 am to 10.00pm"}></Sectiontitle>
+     <Swiper
       slidesPerView={4}
       spaceBetween={30}
       centeredSlides={true}
@@ -40,6 +43,7 @@ const Category = () => {
       </SwiperSlide>
       
     </Swiper>
+   </section>
   );
 };
 
