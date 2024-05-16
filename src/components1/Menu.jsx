@@ -1,7 +1,8 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../components/Cover";
 import menuImg from "../images/menu/banner3.jpg";
-import PopularMenu from "../components/PopularMenu";
+import dessertImg from '../images/menu/dessert-bg.jpeg'
+// import PopularMenu from "../components/PopularMenu";
 
 import useMenu from "./hooks/useMenu";
 import Sectiontitle from "../components/Sectiontitle";
@@ -25,7 +26,7 @@ const Menu = () => {
       title && <Cover menuImg={menuImg} title="Our Menu"></Cover>
       <Sectiontitle subHeading="Dont miss" heading="today's Offer"></Sectiontitle>
       <Menucategory items={offered}></Menucategory>
-      <Menucategory items={dessert} title="dessert"></Menucategory>
+      <Menucategory img={dessertImg} items={dessert} title="dessert"></Menucategory>
       
 
     </div>
