@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form"
-const Signup = () => {
 
+const Signup = () => {
   const {
     register,
     handleSubmit,
@@ -36,12 +36,13 @@ const Signup = () => {
               </label>
               <input
                 type="text"
-                {...register("name")} 
+                {...register("name", { required: true })}
                 placeholder="enter your name"
                 className="input input-bordered"
                 name="name"
-                required
+               
               />
+              {errors.name && <span className="text-red-600">This field is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -49,12 +50,13 @@ const Signup = () => {
               </label>
               <input
                 type="email"
-                {...register("email")} 
+                {...register("email", { required: true })} 
                 placeholder="email"
                 className="input input-bordered"
                 name="email"
-                required
+               
               />
+              {errors.email && <span className="text-red-600">email is required</span>}
             </div>
             <div className="form-control">
               <label className="label">
@@ -62,12 +64,13 @@ const Signup = () => {
               </label>
               <input
                 type="password"
-                {...register("password")} 
+                {...register("password",  { required: true, minLength:6, maxLength:20 })} 
                 placeholder="password"
                 className="input input-bordered"
                 name="password"
-                required
+               
               />
+              {errors.password?.type === 'required' && <span className="text-red-600">password is required</span>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
