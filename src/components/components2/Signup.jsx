@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "./Authprovider";
-
+import Swal from 'sweetalert2'
 const Signup = () => {
 
   const {createUser} = useContext(AuthContext)
@@ -22,6 +22,11 @@ const Signup = () => {
        .then(result =>{
          const loggedUser = result.user
          console.log(loggedUser);
+         Swal.fire({
+          title: "Good job!",
+          text: "You clicked the button!",
+          icon: "success"
+        });
        })
        .catch(error=>{
          console.log(error)
