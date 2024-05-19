@@ -64,13 +64,16 @@ const Signup = () => {
               </label>
               <input
                 type="password"
-                {...register("password",  { required: true, minLength:6, maxLength:20 })} 
+                {...register("password",  { required: true, minLength:6, maxLength:20,pattern: /^(?=.*[a-z])(?=.*[A-Z]).+$/ })} 
                 placeholder="password"
                 className="input input-bordered"
                 name="password"
                
               />
               {errors.password?.type === 'required' && <span className="text-red-600">password is required</span>}
+              {errors.password?.type === 'minLength' && <span className="text-red-600">Password should be six character</span> }
+              {errors.password?.type === 'maxLength' && <span className="text-red-600">Password less tahn 20 character</span> }
+              {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case.</p>}
               <label className="label">
                 <a href="#" className="label-text-alt link link-hover">
                   Forgot password?
