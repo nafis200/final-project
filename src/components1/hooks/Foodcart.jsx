@@ -2,6 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import useAuth from "./useAuth";
 import Swal from 'sweetalert2'
 import useAxiosSecure from "./useAxiosSecure";
+import useCart from "./useCart";
 // import axios from "axios";
 
 const Foodcart = ({ item }) => {
@@ -10,8 +11,9 @@ const Foodcart = ({ item }) => {
   const navigate = useNavigate()
   const location = useLocation()
   const axiosSecure = useAxiosSecure()
+  const [,refetch] = useCart()
 
-  const handleAddToCart = food =>{
+  const handleAddToCart = () =>{
       
           if(users && users.email){
  
@@ -23,7 +25,7 @@ const Foodcart = ({ item }) => {
               price
             }
             // axios.post(`http://localhost:5009/carts`,cartItem)
-            axiosSecure.post('/carts')
+            axiosSecure.post('/carts',cartItem)
             .then(res =>{
                console.log(res.data)
                if(res.data.insertedId){
@@ -33,8 +35,11 @@ const Foodcart = ({ item }) => {
                   text: "Add",
                   footer: '<a href="#">Why do I have this issue?</a>'
                 });
+                refetch()
                }
+              
             })
+            
           }
           else{
             Swal.fire({
@@ -60,7 +65,7 @@ const Foodcart = ({ item }) => {
         <h2 className="card-title">{name}</h2>
         <p>{recipe}</p>
         <div className="card-actions justify-end">
-          <button onClick={()=>handleAddToCart(item)} className="btn btn-primary">Add to Cart</button>
+          <button onClick={handleAddToCart} className="btn btn-primary">Add to Cart</button>
         </div>
       </div>
     </div>
