@@ -11,7 +11,7 @@ const Dashboard = () => {
 
             <ul className="menu p-4">
                <li> 
-                 <NavLink to="/dashboard/userHome"> <FaHome></FaHome> user Home</NavLink> 
+                 <NavLink to="/dashbord/userHome"> <FaHome></FaHome> user Home</NavLink> 
                 </li>
                <li> 
                  <NavLink to="/dashboard/cart"> <FaShoppingCart> </FaShoppingCart> My cart</NavLink> 
@@ -25,12 +25,19 @@ const Dashboard = () => {
                <li> 
                  <NavLink to="/dashboard/bookings"> <FaCalendar></FaCalendar>Bookings</NavLink> 
                 </li>
+                <div className="divider"></div>
+                <li> 
+                 <NavLink to="/"> <FaHome></FaHome>Home</NavLink> 
+                </li>
+                <li> 
+                 <NavLink to="/order/salad"> <FaHome></FaHome>menu</NavLink> 
+                </li>
             </ul>
 
 
             </div>
             {/* dashboard content */}
-            <div className="flex-1">
+            <div className="flex-1 p-8">
                 <Outlet></Outlet>
             </div>
         </div>
