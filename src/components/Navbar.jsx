@@ -36,7 +36,7 @@ const Navbar = () => {
         <Link to="/secret">Secret</Link>{" "}
       </li>
       <li>
-        <Link to="/">
+        <Link to="/dashboard/cart">
           {" "}
           <button className="btn">
            <LuShoppingCart className="mr-2"></LuShoppingCart>  
