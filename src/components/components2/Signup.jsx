@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { useForm } from "react-hook-form"
 import { AuthContext } from "./Authprovider";
 import Swal from 'sweetalert2'
+import useAxiospublic from "../../components1/hooks/useAxiospublic";
 const Signup = () => {
 
   const {createUser} = useContext(AuthContext)
+  const axiosPublic = useAxiospublic()
 
   const {
     register,
@@ -13,20 +15,35 @@ const Signup = () => {
     formState: { errors },
   } = useForm()
 
-
-  
-    
     const onSubmit = (data) => {
        console.log(data);
        createUser(data.email,data.password)
        .then(result =>{
+
+         const userinfo = {
+             name: data.name,
+             email: data.email
+         }
+
+         axiosPublic.post('/users',userinfo)
+         .then(res => {
+             if(res.data.insertedId){
+             
+              Swal.fire({
+                title: "Good job!",
+                text: "You clicked the button!",
+                icon: "success",
+                showConfirmButton: false,
+                timer: 2000
+              });
+
+             }
+         })
+
+
          const loggedUser = result.user
          console.log(loggedUser);
-         Swal.fire({
-          title: "Good job!",
-          text: "You clicked the button!",
-          icon: "success"
-        });
+    
        })
        .catch(error=>{
          console.log(error)
