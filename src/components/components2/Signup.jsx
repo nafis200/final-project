@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form"
 import { AuthContext } from "./Authprovider";
 import Swal from 'sweetalert2'
 import useAxiospublic from "../../components1/hooks/useAxiospublic";
+import SocialLogin from "./SocialLogin";
 const Signup = () => {
 
   const {createUser} = useContext(AuthContext)
@@ -122,6 +123,7 @@ const Signup = () => {
               <input className="btn btn-primary" type="submit" value="Sign up" />
             </div>
           </form>
+          <SocialLogin></SocialLogin>
         </div>
       </div>
     </div>
