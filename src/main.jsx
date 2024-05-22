@@ -24,6 +24,7 @@ import {
 } from '@tanstack/react-query'
 import Dashboard from './components/components2/Dashboard';
 import Cart from './Dashboard/Cart';
+import Allusers from './admin/Allusers';
 
 const queryClient = new QueryClient()
 
@@ -66,6 +67,11 @@ const router = createBrowserRouter([
       {
         path: 'cart',
         element: <Cart></Cart>
+      },
+      // admin routes
+      {
+         path:'users',
+         element:<Allusers></Allusers>
       }
     ]
   }
