@@ -62,7 +62,7 @@ const Authprovider = ({children}) => {
           return ()=>{
             unSubscrive()
         }
-    },[])
+    },[ axiosPublic])
     const authInfo = {users,createUser,loading,signInUser, logout,signIngoogle}
     return (
         <AuthContext.Provider value = {authInfo}>
