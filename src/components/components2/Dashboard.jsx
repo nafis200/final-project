@@ -1,6 +1,7 @@
 import { FaCalendar, FaHome, FaShoppingCart } from "react-icons/fa";
 import { NavLink, Outlet } from "react-router-dom";
 import useCart from "../../components1/hooks/useCart";
+import useAdmin from "../../components1/hooks/useAdmin";
 
 
 
@@ -8,7 +9,7 @@ const Dashboard = () => {
    const [cart] = useCart()
   
 
-   const isAdmin= true;
+   const [isAdmin]= useAdmin();
    
     return (
         <div className="flex">
