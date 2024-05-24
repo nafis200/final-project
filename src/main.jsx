@@ -27,6 +27,7 @@ import Cart from './Dashboard/Cart';
 import Allusers from './admin/Allusers';
 import Additems from './Dashboard/Additems';
 import AdminRoute from './components/components2/Adminroute';
+import ManageItem from './Dashboard/ManageItem';
 
 
 const queryClient = new QueryClient()
@@ -79,6 +80,10 @@ const router = createBrowserRouter([
       {
          path:'addItems',
          element:<AdminRoute><Additems></Additems></AdminRoute>
+      },
+      {
+         path:'manageItems',
+         element:<ManageItem></ManageItem>
       }
     ]
   }
