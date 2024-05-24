@@ -1,10 +1,23 @@
 import Sectiontitle from "../components/Sectiontitle";
 import { useForm } from "react-hook-form";
+import useAxiospublic from "../components1/hooks/useAxiospublic";
+
+const image_hosting = import.meta.env.VITE_IMAGE_HOSTING_KEY
+
+const image_api = `https://api.imgbb.com/1/upload?key=${image_hosting}`
 
 const Additems = () => {
   const { register, handleSubmit } = useForm();
-  const onSubmit = (data) => {
+  const axiosPublic = useAxiospublic()
+  const onSubmit = async(data) => {
     console.log(data)
+    const imageFile = {image: data.image[0]}
+    const res = await axiosPublic.post(image_api,imageFile,{
+        headers:{
+            'content-type':'multipart/form-data'
+        }
+    })
+     console.log(res.data)
   };
   return (
     <div>
@@ -31,10 +44,11 @@ const Additems = () => {
             {/* category */}
             <label className="form-control w-full  my-6">
             <select
+                  defaultValue="default"
                   {...register("category")}
                   className="select select-bordered w-full max-w-xs"
                 >
-                  <option disabled selected>
+                  <option disabled value="default">
                     Select a category
                   </option>
                   <option value="salad">Salad</option>
