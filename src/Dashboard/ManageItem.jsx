@@ -1,11 +1,21 @@
 import Sectiontitle from "../components/Sectiontitle";
+import useAxiosSecure from "../components1/hooks/useAxiosSecure";
 import useMenu from "../components1/hooks/useMenu";
 
 const ManageItem = () => {
   const [menu] = useMenu()
-  
-  const handleDelete = (item)=>{
-    
+  const axiosSecure = useAxiosSecure()
+  const handleDelete = async(item)=>{
+        console.log(item)
+        const res = await axiosSecure.delete(`/menu/${item}`)
+
+        // Swal.fire  
+        // .then(async(result))
+        if(res.data.deletedCount > 0){
+            
+        }
+
+
   }
   
   return (
