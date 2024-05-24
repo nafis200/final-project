@@ -3,7 +3,7 @@ import useAxiosSecure from "../components1/hooks/useAxiosSecure";
 import useMenu from "../components1/hooks/useMenu";
 
 const ManageItem = () => {
-  const [menu] = useMenu()
+  const [menu,loading,refetch] = useMenu()
   const axiosSecure = useAxiosSecure()
   const handleDelete = async(item)=>{
         console.log(item)
@@ -12,7 +12,11 @@ const ManageItem = () => {
         // Swal.fire  
         // .then(async(result))
         if(res.data.deletedCount > 0){
-            
+            refetch()
+            console.log('delete');
+        }
+        else{
+            console.log('dont delete',res.data.deletedCount);
         }
 
 
