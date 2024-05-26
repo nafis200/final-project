@@ -28,6 +28,7 @@ import Allusers from './admin/Allusers';
 import Additems from './Dashboard/Additems';
 import AdminRoute from './components/components2/Adminroute';
 import ManageItem from './Dashboard/ManageItem';
+import Payment from './payment/Payment';
 
 
 const queryClient = new QueryClient()
@@ -84,6 +85,10 @@ const router = createBrowserRouter([
       {
          path:'manageItems',
          element:<ManageItem></ManageItem>
+      },
+      {
+         path:'payment',
+         element:<Payment></Payment>
       }
     ]
   }
