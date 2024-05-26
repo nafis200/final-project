@@ -7,8 +7,10 @@ import {
   
 } from '@stripe/react-stripe-js';
 import Checkoutform from './Checkoutform';
-const Payment = () => {
+
     const stripePromise = loadStripe(import.meta.env.VITE_payment);
+const Payment = () => {
+    
     return (
         <div>
            <Sectiontitle heading="paymant" subHeading="gateway"></Sectiontitle>
