@@ -43,7 +43,6 @@ const Authprovider = ({children}) => {
             const loggedUser = {email : userEmail}
             
             setUsers(currentUser)
-            setLoading(false)
             if(currentUser){
                 
                 const userInfo = { email: currentUser.email };
@@ -51,6 +50,7 @@ const Authprovider = ({children}) => {
                     .then(res => {
                         if (res.data.token) {
                             localStorage.setItem('access-token', res.data.token);
+                            setLoading(false)
                         }
                     })
                 

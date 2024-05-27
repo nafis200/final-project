@@ -37,8 +37,8 @@ const Navbar = () => {
         <Link to="/secret">Secret</Link>{" "}
       </li>
      
-        {
-           users && isAdmin && <li> <Link to="/dashboard/adminHome"></Link>AdminHome</li>
+      {
+           users && isAdmin && <li> <Link to="/dashboard/adminHome">Admin Home</Link> </li>
         }
 
         {
