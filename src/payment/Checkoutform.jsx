@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../components1/hooks/useAxiosSecure";
 import useCart from "../components1/hooks/useCart";
 import useAuth from "../components1/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -12,20 +13,22 @@ const Checkoutform = () => {
   const [transaction,setTransaction] = useState('')
   const stripe = useStripe() 
   const elements = useElements()
-
+  const navigate = useNavigate()
   const axiosSecure = useAxiosSecure()
-  const [cart] = useCart()
+  const [cart,refetch] = useCart()
   const {users} = useAuth()
   const totalPrice = cart.reduce((total,item)=> total + item.price ,0)
   console.log(cart)
   console.log(totalPrice)
   useEffect(()=>{
 
+     if(totalPrice > 0){
       axiosSecure.post('/create-payment-intent',{price:totalPrice})
       .then(res=>{
          console.log(res.data.clientSecret)
          setClientSecret(res.data.clientSecret)
       })
+     }
 
   },[axiosSecure,totalPrice])
 
@@ -75,6 +78,23 @@ const Checkoutform = () => {
        if(paymentIntent.status === 'succeeded'){
           console.log('transaction id',paymentIntent.id)
           setTransaction(paymentIntent.id)
+          
+          const payment = {
+             email:users.email,
+             price:totalPrice,
+             transactionId:paymentIntent.id,
+             date: new Date(),
+             cartIds: cart.map(item=> item._id),
+             menuItemIds: cart.map(item => item.menuId),
+             status: 'pending'
+          }
+         const res =await axiosSecure.post('/payments',payment)
+         console.log(res.data,'payment save')
+         refetch()
+         if(res.data?.paymentResult?.insertedId){
+            //  sweet alert
+            navigate('/dahsboard/paymentHistory')
+         }
        }
     }
 

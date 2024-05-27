@@ -29,6 +29,8 @@ import Additems from './Dashboard/Additems';
 import AdminRoute from './components/components2/Adminroute';
 import ManageItem from './Dashboard/ManageItem';
 import Payment from './payment/Payment';
+import Paymenthistory from './payment/Paymenthistory';
+import PaymentRealhistory from './payment/PaymentRealhistory';
 
 
 const queryClient = new QueryClient()
@@ -89,6 +91,14 @@ const router = createBrowserRouter([
       {
          path:'payment',
          element:<Payment></Payment>
+      },
+      {
+         path: 'paymentHistory',
+         element: <Paymenthistory></Paymenthistory>
+      },
+      {
+        path:'history',
+        element:<PaymentRealhistory></PaymentRealhistory>
       }
     ]
   }
