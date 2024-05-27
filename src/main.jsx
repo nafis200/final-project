@@ -31,6 +31,8 @@ import ManageItem from './Dashboard/ManageItem';
 import Payment from './payment/Payment';
 import Paymenthistory from './payment/Paymenthistory';
 import PaymentRealhistory from './payment/PaymentRealhistory';
+import Usershome from './Dashboard/Usershome';
+import AdminHome from './Dashboard/AdminHome';
 
 
 const queryClient = new QueryClient()
@@ -99,6 +101,14 @@ const router = createBrowserRouter([
       {
         path:'history',
         element:<PaymentRealhistory></PaymentRealhistory>
+      },
+      {
+         path:'userHome',
+         element:<Usershome></Usershome>
+      },
+      {
+         path:'adminHome',
+         element: <AdminRoute> <AdminHome></AdminHome> </AdminRoute>
       }
     ]
   }

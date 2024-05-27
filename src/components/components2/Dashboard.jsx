@@ -39,12 +39,12 @@ const Dashboard = () => {
                  
                  </> : <>
                    <li> 
-                 <NavLink to="/dashbord/userHome"> <FaHome></FaHome> user Home</NavLink> 
+                 <NavLink to="/dashboard/userHome"> <FaHome></FaHome> user Home</NavLink> 
                 </li>
                <li> 
                  <NavLink to="/dashboard/cart"> <FaShoppingCart> </FaShoppingCart> My cart</NavLink> 
                 </li>
-               <li> 
+                <li> 
                  <NavLink to="/dashboard/paymentHistory"> <FaCalendar></FaCalendar>Payment History</NavLink> 
                 </li>
                <li> 

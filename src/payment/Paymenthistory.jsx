@@ -16,10 +16,10 @@ const Paymenthistory = () => {
             return res.data
         }
     })
-    console.log(payments)
+    
     return (
         <div>
-            <h2 className="text-3xl">total Payment: {payments.length} </h2>
+            <h2 className="text-3xl">total Payment:{payments.length}</h2>
         </div>
     );
 };

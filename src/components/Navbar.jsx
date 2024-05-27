@@ -3,12 +3,13 @@ import { Link } from "react-router-dom";
 import { AuthContext } from "./components2/Authprovider";
 import { LuShoppingCart } from "react-icons/lu";
 import useCart from "../components1/hooks/useCart";
+import useAdmin from "../components1/hooks/useAdmin";
 
 const Navbar = () => {
   const { users, logout } = useContext(AuthContext);
 
   const [cart] = useCart()
-
+  const [isAdmin] = useAdmin()
   const handleLogout = () => {
     logout()
       .then(() => {})
@@ -35,6 +36,15 @@ const Navbar = () => {
         {" "}
         <Link to="/secret">Secret</Link>{" "}
       </li>
+     
+        {
+           users && isAdmin && <li> <Link to="/dashboard/adminHome"></Link>AdminHome</li>
+        }
+
+        {
+           users && !isAdmin && <li> <Link to="/dashboard/userHome">Users Home</Link> </li>
+        }
+      
       <li>
         <Link to="/dashboard/cart">
           {" "}

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import useAxiosSecure from "../components1/hooks/useAxiosSecure";
 import useCart from "../components1/hooks/useCart";
 import useAuth from "../components1/hooks/useAuth";
-import { useNavigate } from "react-router-dom";
+
 
 
 
@@ -13,7 +13,6 @@ const Checkoutform = () => {
   const [transaction,setTransaction] = useState('')
   const stripe = useStripe() 
   const elements = useElements()
-  const navigate = useNavigate()
   const axiosSecure = useAxiosSecure()
   const [cart,refetch] = useCart()
   const {users} = useAuth()
@@ -88,12 +87,12 @@ const Checkoutform = () => {
              menuItemIds: cart.map(item => item.menuId),
              status: 'pending'
           }
-         const res =await axiosSecure.post('/payments',payment)
+         const res =await axiosSecure.post(`/payments`,payment)
          console.log(res.data,'payment save')
          refetch()
          if(res.data?.paymentResult?.insertedId){
             //  sweet alert
-            navigate('/dahsboard/paymentHistory')
+            
          }
        }
     }
